@@ -6,7 +6,7 @@ int main(){
     int c, lastc;
 
     lastc = NONBLANK;
-    /* we read the "text stream"
+     /* we read the "text stream"
      *
      * when we encounter a new line
      * we drop into the loop
@@ -19,19 +19,10 @@ int main(){
      * putchar prints the char representaiton of the int
      */
     while ((c = getchar()) != EOF){
-       /* if c is not a blank, print it to the screen */
-       if (c != ' ')
+       /* if c is not a blank, or lastc was not a blank
+        * print it to the screen * */
+       if (c != ' ' || lastc != ' ')
            putchar(c);
-
-       /* if c is a blank
-        * check if the last char we entered was also a blank
-        * if lastchar was not a blank, print c */
-       if (c == ' ')
-           if (lastc != ' ')
-               putchar(c);
-
-       /* if lastchar was a blank, don't print current c
-        * update lastc to hold current c*/
        lastc = c;
     }
     return 0;
