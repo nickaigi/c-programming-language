@@ -19,9 +19,9 @@ int main(){
              */
             ++ndigit[c-'0'];
 
-            /* if our c resolves to integer 2 then 
+            /* if our the value of c resolves to integer eg 2 then 
              * ++ndigit[c-'0']  is interepreted as
-             * value of ndigit[ index of 2] =  value of ndigit[ index of 2] + 1
+             * value of ndigit[ index of value 2] =  value of ndigit[ index of value 2] + 1
              */
         }
         else if (c == ' ' || c == '\n' || c == '\t')
