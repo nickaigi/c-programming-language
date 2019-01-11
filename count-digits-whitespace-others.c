@@ -18,11 +18,10 @@ int main(){
              * '2' becomes the integer 2 if we '2'-'0'
              */
             ++ndigit[c-'0'];
-
-            /* if our the value of c resolves to integer eg 2 then 
-             * ++ndigit[c-'0']  is interepreted as
-             * value of ndigit[ index of value 2] =  value of ndigit[ index of value 2] + 1
-             */
+            /*
+            * remember ++i represents i = i + 1
+            * therefore ++arrayName[i] is arrayName[i] = arrayName[i] + 1
+            */
         }
         else if (c == ' ' || c == '\n' || c == '\t')
             ++nwhite;
