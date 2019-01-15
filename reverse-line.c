@@ -4,7 +4,7 @@
 void rev(void);
 
 char s[MAX];
-char reveresed[MAX];
+char reversed[MAX];
 int len;
 
 int main(){
@@ -20,12 +20,12 @@ int main(){
 }
 void rev(void){
     extern char s[];
-    extern char reveresed[];
+    extern char reversed[];
     int rcount = 0;
     for(int i = len -1 ; i >= 0; i--){
-        reveresed[rcount] = s[i];
+        reversed[rcount] = s[i];
         rcount++;
     }
-    reveresed[rcount + 1] = '\0';
-    printf("%s\n", reveresed);
+    reversed[rcount + 1] = '\0';
+    printf("%s\n", reversed);
 }
