@@ -5,42 +5,49 @@
  * to avoid conflicting declarations, we use getline_
  */
 
-int getline_(char line[], int maxline);
-void copy(char to[], char from[]);
+char line[MAXLINE];
+char longest[MAXLINE];
+int max;
+
+int getline_(void);
+void copy(void);
 
 int main(){
     int len;
-    int max;
-    char line[MAXLINE];
-    char longest[MAXLINE];
+    /* since variables are declared in this file,
+     * extern is not nescessary
+     * it is implicit
+     *
+     * extern char longest[];
+     *
+     */
 
     max = 0;
-    while ((len = getline_(line, MAXLINE)) > 0)
+    while ((len = getline_()) > 0)
         if (len > max){
             max = len;
-            copy(longest, line);
+            copy();
         }
     if (max > 0)
         printf("the longest is - %s", longest);
     return 0;
 }
 
-int getline_(char s[], int lim){
+int getline_(void){
     int c, i;
-    for (i = 0; i < lim -1 && (c = getchar()) != EOF && c != '\n'; i++)
-        s[i] = c;
+    for (i = 0; i < MAXLINE -1 && (c = getchar()) != EOF && c != '\n'; i++)
+        line[i] = c;
     if (c == '\n'){
-        s[i] = c;
+        line[i] = c;
         i++;
     }
-    s[i] = '\0';
+    line[i] = '\0';
     return i;
 }
 
-void copy(char to[], char from[]){
+void copy(void){
     int i;
-
     i = 0;
-    while((to[i] = from[i]) != '\0')
+    while((longest[i] = line[i]) != '\0')
         i++;
 }
