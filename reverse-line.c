@@ -7,6 +7,8 @@ char s[MAX];
 char reversed[MAX];
 int len;
 
+/* exercise 1-19 */
+
 int main(){
     int c;
     extern int len;
