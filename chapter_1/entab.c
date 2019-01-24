@@ -1,36 +1,31 @@
 #include<stdio.h>
-#define MAXLINE 1000
-#define SPACEFORTABS 4
+#define TABINC 8
 
 int main(){
-    int c, i;
-    int spacecount = 1; // setspacecount to 1, since we only meet spacecount if lastc was a ' '
-    char line[MAXLINE];
-    char lastc = 'a'; // abitrary value of lastchar 
-    i = 0;
-
-    while ((c = getchar()) != EOF && (i < MAXLINE - 2)){
-        if (c == ' ' && lastc == ' '){
-            ++spacecount;
-            if (spacecount == SPACEFORTABS){
-                // TODO we are losing the rest of the string if we execute this section
-                line[i] = '\t';
-                ++i;
-                spacecount = 0;
-            }else{
-                for(int x = 1; x <= spacecount; ++x){
-                    line[i + x] = ' ';
-                    ++i;
-                }
-                spacecount = 0;
+    int c, nb, nt, pos;
+    nb = 0;
+    nt = 0;
+    for(pos = 1; (c = getchar()) != EOF; ++pos)
+        if (c == ' '){
+            if (pos % TABINC != 0)
+                ++nb;
+            else{
+                nb = 0;
+                ++nt;
             }
-        }else {
-            line[i] = c;
-            ++i;
+        } else{
+            for( ; nt > 0; --nt)
+                putchar('\t');
+            if (c == '\t')
+                nb = 0;
+            else
+                for ( ; nb > 0; --nb)
+                    putchar(' ');
+            putchar(c);
+            if (c == '\n')
+                pos = 0;
+            else if (c == '\t')
+                pos = pos + (TABINC -(pos-1) % TABINC) -1;
         }
-        lastc = c;
-    }
-    line[i] = '\0';
-    printf("%s\n", line);
     return 0;
 }
