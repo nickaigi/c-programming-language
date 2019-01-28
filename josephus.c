@@ -1,8 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h> /* utility functions including number convertions that we need */
+#include "myutils.h" /* demonstrates how to write a custom header file*/
 
 int winningseat(int total);
-int power(int base, int xp);
 
 int main(int argc, char *argv[]){
     /* argc - argument count
@@ -44,12 +44,4 @@ int winningseat(int total){
         }
     }
     return -1; // error
-}
-
-int power(int base, int xp){
-    /* refer to chapter_1/raise-to-power.c */
-    if (xp < 1)
-        return 1;
-    else
-        return base * power(base, xp - 1);
 }
