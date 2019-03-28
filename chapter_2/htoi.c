@@ -11,13 +11,12 @@
 #include<math.h>
 
 int htoi(char[]);
-int position(char[],int, char);
 int hex_symbol(char);
 
 int main(){
     // TODO check that char part of the hex number
     // falls within a..f and A..F
-    printf("Integer value of 0x%s is %d\n", "3f", htoi("3f"));
+    printf("Integer value of 0x%s is %d\n", "ffff", htoi("ffff"));
 }
 
 int htoi(char h[]){
@@ -30,29 +29,19 @@ int htoi(char h[]){
     int arlen = (int)strlen(h);
     for(i = 0; i < arlen ; ++i){
         if(isdigit(h[i])){
-            pos = position(h, arlen, h[i]);
+            pos = arlen - (i + 1);
             temp_val = h[i] - '0';
             printf("current: %d, position: %d\n", temp_val, pos);
             result += temp_val * pow(HEX_BASE, pos);
         }
         else{
-            pos = position(h, arlen, h[i]);
+            pos = arlen - (i + 1);
             temp_val = hex_symbol(h[i]);
             printf("current hex val: %d, position: %d\n", temp_val, pos);
             result += temp_val * pow(HEX_BASE, pos);
         }
     }
     return result;
-}
-
-int position(char h[],int len, char a){
-    /* find the position of char inside h[]*/
-    int i;
-    for(i=0; i < len; ++i){
-        if(h[i] == a)
-            return len - (i + 1);
-    }
-    return -1;
 }
 
 int hex_symbol(char a){
