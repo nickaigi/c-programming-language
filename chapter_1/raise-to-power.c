@@ -12,6 +12,7 @@ int main(){
 
 /* I thought that this should be a recursive problem 
  * since x^y = x * x^(y-1)
+ * Naive implementation, doesn't handle negative powers
  */
 
 int power(int base, int xp){
