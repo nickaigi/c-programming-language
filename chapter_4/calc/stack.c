@@ -2,8 +2,8 @@
 #include "calc.h"
 #define MAXVAL 100    /* max dept of val stack */
 
-int sp = 0;           /* next freee stack position */
-double val[MAXVAL];   /* value stack */
+static int sp = 0;           /* next freee stack position */
+static double val[MAXVAL];   /* value stack */
 
 /* push: push f onto value stack */
 void push(double f) {
