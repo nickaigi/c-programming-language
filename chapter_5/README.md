@@ -1,10 +1,10 @@
 # Pointers And Arrays
 
-- A pointer is a variable that contains the address of a variable
+A pointer is a variable that contains the address of a variable
 
 `&` gives the address of an object
 
-- The expression:
+The expression:
 
 ```c
 p = &c;
