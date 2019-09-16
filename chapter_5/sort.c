@@ -3,7 +3,7 @@
 
 #define MAXLINES 5000 /* max #lines to be sorted */
 
-char *lineptr[MAXLINES] /* pointers to text lines */
+char *lineptr[MAXLINES]; /* pointers to text lines */
 
 int readlines(char *lineptr[], int nlines);
 void writelines(char *lineptr[], int nlines);
@@ -20,7 +20,7 @@ int main() {
         writelines(lineptr, nlines);
         return 0;
     } else {
-        printf("errro: input too big to sort\n");
+        printf("error: input too big to sort\n");
         return 1;
     }
     return 0;
@@ -39,7 +39,7 @@ int readlines(char *lineptr[], int maxlines) {
     while ((len = getline(line, MAXLEN)) > 0)
         if (nlines >= maxlines || (p = alloc(len)) == NULL)
             return -1;
-        } else {
+        else {
             line[len-1] = '\0'; /* delete newline */
             strcpy(p, line);
             lineptr[nlines++] = p;
