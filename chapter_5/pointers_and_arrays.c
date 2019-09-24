@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /* Pointes and Arrays:
- * - Any operation that tcan be achieved by array subscripting can also be done
+ * - Any operation that can be achieved by array subscripting can also be done
  *   with pointers.
  * - The pointer version will in general be faster.
  */
@@ -33,5 +33,9 @@ int main() {
         printf("Index = %d, value = %d\n", i, *(pa + i));
 
     
+    printf("\nWe can use array name as a pointer\n");
+    for (i = 0; i < 10; i++)
+        printf("%d\n", *(a + i));
+
     return 0;
 }
