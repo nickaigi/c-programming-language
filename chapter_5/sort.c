@@ -49,9 +49,50 @@ int readlines(char *lineptr[], int maxlines) {
 }
 
 /* writelines: write output lines */
-void writelines(char *lineptr, int nlines) {
+void writelinesOld(char *lineptr[], int nlines) {
     int i;
 
     for (i = 0; i < nlines; i++)
         printf("%s\n", lineptr[i]);
+}
+
+/* since 'lineptr' is itself the name of an array, it can be treated as a pointer
+ * in the same manner as in our earlier examples and 'writelines' can be written
+ * as 
+ */
+
+void writelines(char *lineptr[], int nlines) {
+    /* initially, *lineptr points to the first line; each increment advances it
+     * to the next line pointer while 'nlines' is counted down
+     */
+    while (nlines-- > 0)
+        printf("%s\n", *lineptr++);
+}
+
+/* qsort: sort v[left] ... v[right] into increasing order */
+void qsort(char *v[], int left, int right) {
+    int i, last;
+    void swap(char *v[], int i, int j);
+
+    if (left >= right) /* do nothing if array contains */
+        return;        /* fewer than two elements */
+
+    swap(v, left, (left + right)/2);
+    last = left;
+
+    for (i = left+1; i <= right; i++)
+        if (strcmp(v[i], v[left]) < 0)
+            swap(v, ++last, i);
+    swap(v, left, last);
+    qsort(v, left, last-1);
+    qsort(v, last+1, right);
+}
+
+/* swap: interchange v[i] and v[j] */
+void swap(char *v[], int i, int j) {
+    char *temp;
+
+    temp = v[i];
+    v[i] = v[j];
+    v[j] = temp;
 }
