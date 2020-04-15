@@ -13,11 +13,29 @@
  *
  * month_day(1988, 60, &m, &d)
  */
+
+/* - daytab is of type char to illustrate a legitimate use of char for storing
+ *   small non-character integers
+ *
+ * - In C, a 2D array is really a 1D array, each of whose elements is an array
+ *   hence the subsripts are written as
+ *      daytab[i][j]
+ *   which is
+ *      daytab[row][col]
+ *
+ * - We start the array daytab with a column of zero so that the month numbers
+ *   can run from the natural 1 to 12. Since space is not a premium here, this
+ *   is clearer than adjusting the indices.
+ */
 static char daytab[2][13] = {
     {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31},
     {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31},
 };
 
+/* note: arithmetic value of a logical expression such as the one for leap
+ * is either zero (false) or one (true) so it can be used as a usbscript for
+ * array daytab
+ */
 
 /* day_of_year: set day of year from month & day */
 int day_of_year(int year, int month, int day) {
