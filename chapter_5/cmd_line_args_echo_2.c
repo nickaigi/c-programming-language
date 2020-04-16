@@ -9,7 +9,15 @@
 /* echo command-line arguments; 2nd version */
 main(int argc, char *argv[]) {
     while (--argc > 0)
-        printf("%s%s", *++argv, (argc > 1) ? " ": "");
+        printf((argc > 1) ? "%s ": "%s", *++argv);
     printf("\n");
     return 0;
 }
+
+/* since argv is a pointer to the beginning of the array of arguments strings,
+ * incrementing it by 1 (++argv) makes it point at the original argv[1] instead
+ * of argv[0]. Each successive increment moves it along to the next arg
+ *
+ * - note: we changed the argument to printf. orginal was
+ *      printf("%s%s", *++argv, (argc > 1) ? " ": "");
+ */
