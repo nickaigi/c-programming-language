@@ -2,7 +2,7 @@
 #include <string.h>
 #define MAXLINE 10000
 
-int getline(char *line, int max);
+int mygetline(char *line, int max);
 
 /* find: print lines that match pattern from 1st arg */
 main(int argc, char *argv[]){
@@ -12,7 +12,7 @@ main(int argc, char *argv[]){
     if (argc != 2)
         printf("Usage: find pettern\n");
     else
-        while (getline(line, MAXLINE) > 0)
+        while (mygetline(line, MAXLINE) > 0)
             if (strstr(line, argv[1]) != NULL) {
                 printf("%s", line);
                 found++;
@@ -20,17 +20,17 @@ main(int argc, char *argv[]){
     return found;
 }
 
-/* getline: get line into s, return length */
-int getline(char s[], int lim) {
-    int c, i;
+/* mygetline: get line into s, return length */
+int mygetline(char *s, int lim) {
+    int c;
+    char *t = s;
 
-    i = 0;
     while (--lim > 0 && (c=getchar()) != EOF && c != '\n')
-        s[i++] = c;
+        *s++ = c;
 
     if (c == '\n')
-        s[i++] = c;
+        *s++ = c;
 
-    s[i] = '\0';
-    return i;
+    *s = '\0';
+    return s -t;
 }
