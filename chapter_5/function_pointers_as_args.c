@@ -1,5 +1,7 @@
 /* just like normal data pointers, a function pointer can be passed as an
  * argument and can also be returned from a function
+ *
+ * This is very useful in C as it can be used to avoid code redundany.
  */
 
 #include <stdio.h>
