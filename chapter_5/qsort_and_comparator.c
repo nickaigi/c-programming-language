@@ -11,8 +11,21 @@
  * ascending order.
  * To sort an array for any other data type and /or criteria, all we need to
  * do is write more compare functions... while using the same qsort()
- */
+*/
 
+
+/* qsort()
+ *
+ * void qsort (
+ *      void* base, size_t num, site_t size,
+ *      int(*compar)(const void*, const void*)
+ * );
+ * Sorts the 'num' elements of the array pointed to by 'base', each element is
+ * 'size' bytes long, using 'compar' function to determine the order
+ *
+ * refer to: http://www.cplusplus.com/reference/cstdlib/qsort/ 
+ *
+ */
 
 int compare (const void *a, const void* b){
     return ( *(int*)a - *(int*)b );
