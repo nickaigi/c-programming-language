@@ -34,7 +34,7 @@ int compare (const void *a, const void* b){
 int main(){
     int i;
     int values[] = {40, 10, 100, 90, 20, 25};
-    int size_of_values = sizeof(values) / sizeof(values[0]); 
+    int size_of_values = sizeof(values) / sizeof(values[0]);
     qsort(values, size_of_values, sizeof(int), compare);
 
     for(i = 0; i < size_of_values; i++)
