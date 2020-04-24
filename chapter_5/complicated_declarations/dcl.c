@@ -92,14 +92,14 @@ void dcl(void){
 
     for (ns = 0; gettoken() == '*'; ) /* count *'s */
         ns++;
-    dirdcl();
+    mydirdcl();
     while (ns-- > 0)
         strcat(out, " pointer to");
 }
 
 /* dirdcl: parse a direct declarator */
 void mydirdcl(void){
-    int type:
+    int type;
     if (tokentype == '('){  /* ( dcl ) */
         dcl();
         if (tokentype != ')')
