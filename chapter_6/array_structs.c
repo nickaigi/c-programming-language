@@ -22,6 +22,12 @@ struct key {
     "while", 0,
 };
 
+//#define NKEYS (sizeof keytab / sizeof(struct key))
+#define NKEYS (sizeof keytab / sizeof(keytab[0]))
+/* the 2nd version has an advantage that it does not need to be changed if the
+ * type changes
+ */
+
 int getword(char *, int);
 int binsearch(char *, struct key *, int);
 
@@ -41,6 +47,26 @@ int main(){
                     keytab[n].count, keytab[n].word);
     return 0;
 }
+
+/* NKEYS is the number of keywords in 'keytab'
+ * we could count this by hand, but its easier and safer to do it by machine (lol)
+ * - The size of the array is the size of one entry times the number of entries
+ *   so the size of entries is just
+ *
+ *          size of keytab / size of struct key
+ *
+ * - C provides a compile-time unary operator called 'sizeof' that can be used
+ *   to compute the size of any object.
+ *   The expressions
+ *
+ *          sizeof object
+ *
+ *   and
+ *
+ *          sizeof (type name)
+ *
+ *   yield an integer equal to the size of the specified object or type in bytes
+ */
 
 /* binsearch: find word in tab[0]...tab[n-1] */
 int binsearch(char *word, struct key tab[], int n){
@@ -74,3 +100,27 @@ int binsearch(char *word, struct key tab[], int n){
  *   but inner braces are not necessary when the initializers are simple
  *   variables or character strings and when all are present
  */
+
+/* getword: get next word or character from input */
+int getword(char *word, int lim) {
+    int c, getch(void);
+    void ungetch(int);
+    char *w = word;
+
+    while (isspace(c = getch()))
+        ;
+    if (c != EOF)
+        *w++ = c;
+    if (isalpha(c)) {
+        *w = '\0';
+        return c;
+    }
+
+    for (; --lim > 0; w++)
+        if (!isalnum(*w = getch())){
+            ungetch(*w);
+            break;
+        }
+    *w = '\0';
+    return word[0];
+}
