@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<string.h>
 
 enum gender {
     MALE,
@@ -14,12 +15,14 @@ enum gender {
 typedef struct student{
     char name[25];
     int age;
-    char branch[10];
     enum gender gen;
 } Student;
 
 int main(){
     Student s1;
+    s1.age = 18;
+
+    strcpy(s1.name, "Nickson");
 
     return 0;
 }
