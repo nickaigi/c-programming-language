@@ -124,3 +124,10 @@ int getword(char *word, int lim) {
     *w = '\0';
     return word[0];
 }
+
+/* isspace: used to skip whitespaces
+ * isalpha: to identify letters
+ * isalnum: to identify letters and digits
+ *
+ * all are from the standard header <ctype.h>
+ */
