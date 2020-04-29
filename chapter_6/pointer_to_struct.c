@@ -53,6 +53,13 @@ struct key *binsearch(char *word, struct key *tab, int n){
 
     while (low < high) {
         mid = low + (high - low) /2;
+        /* the computation of the middle element can no longer be
+         *      mid = (low + high) /2
+         * because addition of pointers is illegal. Subtraction is legal,
+         * however, so
+         *      high - low
+         * is the number of elements
+         */
         if ((cond = strcmp(word, mid->word)) < 0)
             high = mid;
         else if (cond > 0)
