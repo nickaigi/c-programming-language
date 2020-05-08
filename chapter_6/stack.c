@@ -9,17 +9,15 @@ struct node {
 struct node* nalloc(void);
 void push(int, struct node**);
 void pop(struct node**);
-void top(struct node*);
+void peak(struct node*);
 
 int main(){
-    struct node* root = nalloc();
-    push(1, &root);
-    top(root);
-    push(2, &root);
-    top(root);
-    pop(&root);
-    top(root);
+    struct node* top = nalloc();
+    int c;
+    for(c = 0; c < 10; c++)
+        push(c, &top);
 
+    peak(top);
     return 0;
 }
 
@@ -42,7 +40,7 @@ void pop(struct node** stack){
 }
 
 /* top: display element at the top of the stack */
-void top(struct node* stack){
+void peak(struct node* stack){
     if (stack != NULL){
         printf("top: %d\n", stack->data);
     } else
