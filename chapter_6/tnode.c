@@ -66,4 +66,15 @@ struct tnode *talloc(void){
 
 /* strdup: copies the string given by its argument into a safe
  * place, obtained by a call on malloc
+ *
+ * strdup is defined in String.h
  */
+
+char *mystrdup(char *s) {    /* make a duplicate of s */
+    char *p;
+
+    p = (char *) malloc(strlen(s) + 1);  /* +1 for '\0' */
+    if (p != NULL)
+        strcpy(p, s);
+    return p;
+}
