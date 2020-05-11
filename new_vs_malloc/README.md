@@ -14,7 +14,7 @@ runtime.
 
 
 | malloc                                         | new                                                              |
-|___________________________________________________________________________________________________________________|
+|------------------------------------------------|------------------------------------------------------------------|
 | library function                               | operator                                                         |
 | allocates memory and does not call constructor | allocates memore and calls constructor for object initialization |
 | returns `void*`                                | returns exact data type                                          |
@@ -41,7 +41,7 @@ operator or for a NULL pointer. It also calls the destructor of the class.
 - free is a function used to deallocate memory allocated by `malloc()`
 
 | free                                                 | delete                                                    |
-|__________________________________________________________________________________________________________________|
+|------------------------------------------------------|-----------------------------------------------------------|
 | library function                                     | operator                                                  |
 | frees allocated memory, does not call any destructor | frees the allocated memory and calls the class destructor |
 | uses `C` run time `CRT` heap                         | may be overloaded on class basis to use private heap      |
