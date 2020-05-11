@@ -47,3 +47,4 @@ operator or for a NULL pointer. It also calls the destructor of the class.
 | uses `C` run time `CRT` heap                         | may be overloaded on class basis to use private heap      |
 
 
+[Source](https://learntechway.com/difference-between-delete-and-free-in-c/)
