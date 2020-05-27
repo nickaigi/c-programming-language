@@ -32,3 +32,19 @@ unsigned hash(char *s) {
 
     return hashval % HASHSIZE;
 }
+
+/* The hashing process produces a starting index in the array 'hashtab'
+ * if the string is found anywhere, it will be in the list of blocks beginning there.
+ * The search is performed by 'lookup'
+ * If 'lookup' finds the entry already present, it returns a pointer to it,
+ * if not, it returns NULL
+ */
+
+/* lookup: look for s in hashtab */
+struct nlist *lookup(char *s){
+    struct nlist *np;
+
+    for (np = hashtab[hash(s)]; np != NULL; np = np-next)
+        if (strcmp(s, np->name) == 0 )
+            return np;  /* found */
+    return NULL;        /* not found */
